@@ -16,12 +16,11 @@ spring:
       client:
         registration:
           google:
-            client_id: ${GOOGLE_CLIENT_ID}
-            client_secret: ${GOOGLE_CLIENT_SECRET}
+            client-id: test_id
+            client-secret: test_secret
             scope:
               - email
               - profile
-
 jwt:
-    issuer: ajufresh@gmail.com
-    secret_key: ${JWT_SECRET_KEY}
+  issuer: ajufresh@gmail.com
+  secret_key: test_key
