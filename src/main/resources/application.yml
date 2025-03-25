@@ -15,9 +15,9 @@ spring:
     oauth2:
       client:
         registration:
-          google:
-            client-id: test_id
-            client-secret: test_secret
+#          google:
+#            client-id: test_id
+#            client-secret: test_secret
             scope:
               - email
               - profile
