@@ -5,12 +5,15 @@ import me.dayeon.springbootdeveloper.config.jwt.JwtFactory;
 import me.dayeon.springbootdeveloper.config.jwt.JwtProperties;
 import me.dayeon.springbootdeveloper.domain.RefreshToken;
 import me.dayeon.springbootdeveloper.domain.User;
+import me.dayeon.springbootdeveloper.dto.AddArticleRequest;
 import me.dayeon.springbootdeveloper.dto.CreateAccessTokenRequest;
 import me.dayeon.springbootdeveloper.repository.RefreshTokenRepository;
 import me.dayeon.springbootdeveloper.repository.UserRepository;
+import net.datafaker.Faker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +23,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.security.Principal;
 import java.util.Map;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -88,5 +92,6 @@ class TokenApiControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.accessToken").isNotEmpty());
     }
+
 
 }

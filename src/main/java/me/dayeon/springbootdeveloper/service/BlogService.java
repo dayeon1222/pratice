@@ -2,6 +2,7 @@ package me.dayeon.springbootdeveloper.service;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import me.dayeon.springbootdeveloper.config.error.exception.ArticleNotFoundException;
 import me.dayeon.springbootdeveloper.domain.Article;
 import me.dayeon.springbootdeveloper.dto.AddArticleRequest;
 import me.dayeon.springbootdeveloper.dto.UpdateArticleRequest;
@@ -26,7 +27,7 @@ public class BlogService {
 
     public Article findById(long id) {
         return blogRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("not found: " + id));
+                .orElseThrow(ArticleNotFoundException::new);
     }
 
     public void delete(long id) {
