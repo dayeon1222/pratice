@@ -1,3 +1,4 @@
+
 package me.dayeon.springbootdeveloper.config.jwt;
 
 import io.jsonwebtoken.Claims;
@@ -41,8 +42,8 @@ public class TokenProvider {
                 .compact();
     }
 
-    public boolean validToken(String token){
-        try{
+    public boolean validToken(String token) {
+        try {
             Jwts.parser()
                     .setSigningKey(jwtProperties.getSecretKey())
                     .parseClaimsJws(token);
@@ -52,6 +53,7 @@ public class TokenProvider {
             return false;
         }
     }
+
 
     public Authentication getAuthentication(String token) {
         Claims claims = getClaims(token);
@@ -63,7 +65,7 @@ public class TokenProvider {
 
     public Long getUserId(String token) {
         Claims claims = getClaims(token);
-        return claims.get("id" , Long.class);
+        return claims.get("id", Long.class);
     }
 
     private Claims getClaims(String token) {

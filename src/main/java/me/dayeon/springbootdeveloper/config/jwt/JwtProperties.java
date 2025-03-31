@@ -1,3 +1,4 @@
+
 package me.dayeon.springbootdeveloper.config.jwt;
 
 import lombok.Getter;
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties("jwt")
 public class JwtProperties {
-
     private String issuer;
     private String secretKey;
 }

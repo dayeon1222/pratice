@@ -2,9 +2,8 @@ package me.dayeon.springbootdeveloper.controller;
 
 import lombok.RequiredArgsConstructor;
 import me.dayeon.springbootdeveloper.domain.Article;
-import me.dayeon.springbootdeveloper.dto.AddArticleRequest;
-import me.dayeon.springbootdeveloper.dto.ArticleResponse;
-import me.dayeon.springbootdeveloper.dto.UpdateArticleRequest;
+import me.dayeon.springbootdeveloper.domain.Comment;
+import me.dayeon.springbootdeveloper.dto.*;
 import me.dayeon.springbootdeveloper.service.BlogService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,5 +54,13 @@ public class BlogApiController {
         Article updatedArticle = blogService.update(id, request);
         return ResponseEntity.ok()
                 .body(updatedArticle);
+    }
+
+    @PostMapping("/api/comments")
+    public ResponseEntity<AddCommentResponse> addComment(@RequestBody
+                                                         AddCommentRequest request, Principal principal) {
+        Comment savedComment = blogService.addComment(request, principal.getName());
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(new AddCommentResponse(savedComment));
     }
 }
